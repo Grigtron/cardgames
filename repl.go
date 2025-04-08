@@ -19,10 +19,14 @@ func startRepl() {
 		}
 
 		commandName := words[0]
+		args := []string{}
+		if len(words) > 1 {
+			args = words[1:]
+		}
 
 		command, exists:= getCommands()[commandName]
 		if exists {
-			err := command.callback()
+			err := command.callback(args...)
 			if err != nil {
 				fmt.Println("Error:", err)
 			}
@@ -46,7 +50,7 @@ func cleanInput(text string) []string {
 type cliCommand struct {
 	name string
 	description string
-	callback func() error
+	callback func(...string) error
 }
 
 
@@ -62,5 +66,16 @@ func getCommands() map[string]cliCommand {
 			description: "Exits the program",
 			callback: commandExit,
 		},
+		"play": {
+			name: "play <game_name>",
+			description: "Begin a new specified game",
+			callback: commandPlay,
+		},
+		"war": {
+			name: "war playturn",
+			description: "Play the next turn of War",
+			callback: commandPlayTurn,
+		},
+
 	}
 }

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func commandHelp() error {
+func commandHelp(args ...string) error {
 	fmt.Println()
 	fmt.Println("Welcome to Go Card Games!")
 	fmt.Println("Commands:")
