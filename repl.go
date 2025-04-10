@@ -31,6 +31,12 @@ func startRepl() {
 				fmt.Println("Error:", err)
 			}
 			continue
+		} 
+		if currentGame != nil {
+			err := currentGame.HandleCommand(commandName, args...)
+			if err != nil {
+				fmt.Println("Game error:", err)
+			}
 		} else {
 			fmt.Println("Unknown command")
 			continue
@@ -71,11 +77,5 @@ func getCommands() map[string]cliCommand {
 			description: "Begin a new specified game",
 			callback: commandPlay,
 		},
-		"war": {
-			name: "war playturn",
-			description: "Play the next turn of War",
-			callback: commandPlayTurn,
-		},
-
 	}
 }

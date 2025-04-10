@@ -15,17 +15,15 @@ func commandPlay(args ...string) error {
 	switch args[0] {
 	case "war":
 		fmt.Println("Starting a game of War!")
+		
 
-		var err error
-		currentGame, err = game.NewWarGame()
+		g, err := game.NewWarGame()
 		if err != nil {
 			return fmt.Errorf("could not start War game: %v", err)
 		}
+		currentGame = g
 
-		err = currentGame.PlayTurn()
-		if err != nil {
-			fmt.Println("error during the game", err)
-		}
+		fmt.Println("War: Use 'playturn' to play a round")
 		
 		return nil
 	default:

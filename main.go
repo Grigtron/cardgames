@@ -5,7 +5,7 @@ import (
 
 	"github.com/Grigtron/cardgames/game"
 )
-var currentGame *game.WarGame
+var currentGame game.Game
 func main() {
 	fmt.Println("Welcome to Go Card Games!")
 	fmt.Println("Use 'help' to get a list of current commands")

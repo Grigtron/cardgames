@@ -12,6 +12,8 @@ type WarGame struct {
 	ComputerDeck deck.Deck
 }
 
+var _ Game = (*WarGame)(nil)
+
 func NewWarGame() (*WarGame, error) {
 	d := deck.NewDeck()
 	d = deck.ShuffleDeck(d)
@@ -109,3 +111,15 @@ func (game *WarGame) PlayTurn() error {
 	return nil
 }
 
+func (g *WarGame) HandleCommand(cmd string, args ...string) error {
+	switch cmd {
+	case "playturn":
+		return g.PlayTurn()
+	default:
+		return fmt.Errorf("unknown command for War: %s", cmd)
+	}
+}
+
+func (g *WarGame) Description() string {
+	return "War: Use 'playturn' to play a round"
+}
