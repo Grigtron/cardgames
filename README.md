@@ -7,5 +7,5 @@ Current commands:
 - quit: Quits the current game being played
 
 Current games available:
--War
--Blackjack
+- War
+- Blackjack
