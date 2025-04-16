@@ -65,7 +65,7 @@ func (r Rank) String() string {
 }
 
 func (c Card) String() string {
-	return fmt.Sprintf("%s of %s", c.Rank, c.Suit)
+	return fmt.Sprintf("%s %s", c.Rank, c.Suit)
 }
 
 

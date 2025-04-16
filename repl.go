@@ -77,5 +77,10 @@ func getCommands() map[string]cliCommand {
 			description: "Begin a new specified game",
 			callback: commandPlay,
 		},
+		"quit": {
+			name: "quit",
+			description: "Quit the game you're currently playing",
+			callback: commandQuit,
+		},
 	}
 }
